@@ -1,0 +1,34 @@
+<UserControl x:Class="MediaShrink.Views.TargetBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Drop-down of formats for one media kind; every item shows the size change in percent. -->
+    <StackPanel IsEnabled="{Binding On}">
+        <TextBlock Text="{Binding Title}" Style="{StaticResource Label}"/>
+        <ComboBox Margin="0,4,0,0" ItemsSource="{Binding Items}" SelectedItem="{Binding Sel}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Delta}" Margin="10,0,0,0" FontSize="12"
+                                   VerticalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="{StaticResource Bad}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Gain}" Value="True">
+                                            <Setter Property="Foreground" Value="{StaticResource Good}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </StackPanel>
+</UserControl>

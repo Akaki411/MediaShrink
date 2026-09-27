@@ -44,6 +44,9 @@ ScaffoldingReadMe.txt
 *~
 CodeCoverage/
 
+# Local installer packing script
+pack.bat
+
 # MSBuild Binary and Structured Log
 *.binlog
 
